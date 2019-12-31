@@ -1,0 +1,33 @@
+
+config EXAMPLES_LCD_TEST
+	bool "Test driver of ACM0802C-NLW-BBW-IIC"
+	default n
+	---help---
+		Enable the lcd_test app
+
+if EXAMPLES_LCD_TEST
+
+config EXAMPLES_LCD_TEST_PROGNAME
+	string "Program name"
+	default "lcd_test"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_LCD_TEST_PRIORITY
+	int "lcd_test task priority"
+	default 100
+
+config EXAMPLES_LCD_TEST_STACKSIZE
+	int "lcd_test stack size"
+	default 2048
+
+config EXAMPLES_LCD_TEST_USE_HW_IIC
+	bool "Use Spresense HW IIC peripheral"
+	default n
+	---help---
+		Use Spresense HW IIC Peripheral device to comunicate with LCD device.
+		If it is set n, SW emulates IIC on I2C0 port.
+
+endif

@@ -1,0 +1,4 @@
+
+ifeq ($(CONFIG_EXAMPLES_LCD_TEST),y)
+CONFIGURED_APPS += lcd_test
+endif
