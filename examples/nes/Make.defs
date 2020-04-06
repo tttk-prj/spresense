@@ -1,0 +1,4 @@
+
+ifeq ($(CONFIG_EXAMPLES_NES),y)
+CONFIGURED_APPS += nes
+endif

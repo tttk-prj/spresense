@@ -1,0 +1,26 @@
+
+config EXAMPLES_NES
+	bool "NES emulator by using Cycloa"
+	default n
+	---help---
+		Enable the nes app
+
+if EXAMPLES_NES
+
+config EXAMPLES_NES_PROGNAME
+	string "Program name"
+	default "nes"
+	depends on BUILD_KERNEL
+	---help---
+		This is the name of the program that will be use when the NSH ELF
+		program is installed.
+
+config EXAMPLES_NES_PRIORITY
+	int "nes task priority"
+	default 100
+
+config EXAMPLES_NES_STACKSIZE
+	int "nes stack size"
+	default 2048
+
+endif

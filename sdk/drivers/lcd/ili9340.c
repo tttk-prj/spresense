@@ -673,6 +673,87 @@ static int ili9340_putrun(int devno, fb_coord_t row, fb_coord_t col,
   return OK;
 }
 
+void ili9340_setcolor(int devno, const uint8_t *color_set)
+{
+  int i;
+  FAR struct ili9340_dev_s *dev = &g_lcddev[devno];
+  FAR struct ili9340_lcd_s *lcd = dev->lcd;
+
+  lcd->select(lcd);
+
+  lcd->sendcmd(lcd, ILI9340_COLOR_SET);
+  for(i=0; i<128; i++)
+    {
+      lcd->sendparam(lcd, *color_set++);
+    }
+
+  lcd->deselect(lcd);
+
+  lcd->select(lcd);
+  lcd->sendcmd(lcd, 0xB8);
+  lcd->sendparam(lcd, 0); // Backlight 98%
+  lcd->deselect(lcd);
+
+  lcd->select(lcd);
+  lcd->sendcmd(lcd, 0xB9);
+  lcd->sendparam(lcd, 0); // Backlight 98%
+  lcd->deselect(lcd);
+
+  lcd->select(lcd);
+  lcd->sendcmd(lcd, 0xBA);
+  lcd->sendparam(lcd, 0); // Backlight 98%
+  lcd->deselect(lcd);
+
+  lcd->select(lcd);
+  lcd->sendcmd(lcd, 0xBB);
+  lcd->sendparam(lcd, 0); // Backlight 98%
+  lcd->deselect(lcd);
+
+  lcd->select(lcd);
+  lcd->sendcmd(lcd, 0xBC);
+  lcd->sendparam(lcd, 0); // Backlight 98%
+  lcd->deselect(lcd);
+}
+
+int ili9340_putall(int devno, fb_coord_t y0, fb_coord_t x0,
+                            fb_coord_t height, fb_coord_t width,
+                            FAR const uint8_t * buffer)
+{
+  FAR struct ili9340_dev_s *dev = &g_lcddev[devno];
+  FAR struct ili9340_lcd_s *lcd = dev->lcd;
+  FAR const uint16_t *src = (FAR const uint16_t *)buffer;
+
+  /* Select lcd driver */
+
+  lcd->select(lcd);
+
+  /* Select column and area similar to the partial raster line */
+
+  ili9340_selectarea(lcd, x0, y0, x0 + width - 1, y0 + height - 1);
+
+  /* Send memory write cmd */
+
+  lcd->sendcmd(lcd, ILI9340_MEMORY_WRITE);
+
+  /* Send pixel to gram */
+
+  // lcd->sendgram(lcd, src, width*height);
+  {
+    int ii;
+    for(ii=0; ii<height; ii+=16)
+    {
+      lcd->sendgram(lcd, src, width*16);
+      src += width*16;
+    }
+  }
+
+  /* Deselect the lcd driver */
+
+  lcd->deselect(lcd);
+
+  return OK;
+}
+
 
 /****************************************************************************
  * Name:  ili9340_getrun

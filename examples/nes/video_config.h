@@ -1,0 +1,13 @@
+#ifndef __VIDEO_CONFIG_H__
+#define __VIDEO_CONFIG_H__
+
+// #define MULTI_THREADING_VIDEO_RENDERER
+
+#ifdef MULTI_THREADING_VIDEO_RENDERER
+# define MULTI_CPU_VIDEO_RENDERER
+# define RENDER_BY_LINE
+#else
+// # define RENDER_BY_LINE
+#endif
+
+#endif  // __VIDEO_CONFIG_H__
