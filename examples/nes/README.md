@@ -68,8 +68,8 @@ The point is to install not only "nuttx.spk" but also the "renderer" of the work
 ポイントはnuttx.spkだけではなく、workerのrendererもインストールするところです。
 
 ```
-./tools/flash.sh -c <Your devide port name> -w ../examples/nes/video_worker/renderer/renderer
-./tools/flash.sh -c <Your devide port name> nuttx.spk
+./tools/flash.sh -c <Your device port name> -w ../examples/nes/video_worker/renderer/renderer
+./tools/flash.sh -c <Your device port name> nuttx.spk
 ```
 
 Note: Of course, the Spresense boot loader must be pre-installed on the board. (I am addicted to this.)
@@ -108,7 +108,7 @@ minicomなどのターミナルソフトから実機に繋ぐと、nsh>という
 nsh> nes <iNES file name>
 ```
 
-Note: When specifying a file on the SD card, it seems that it is necessary to always specify it with the full path, and it must be "/mnt/sd0/<file name on the SD card>".
+Note: When specifying a file on the SD card, it seems that it is necessary to always specify it with the full path, and it must be "/mnt/sd0/\<file name on the SD card\>".
 
 注：SDカードにあるファイルを指定する場合、必ずフルパスで指定する必要があるようで、"/mnt/sd0/<SDカードにあるファイル名>"としなくてはいけないようです。
 
