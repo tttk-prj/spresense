@@ -19,9 +19,13 @@ Note: Changes to Cycloa for this are in [here](https://github.com/tttk-prj/Cyclo
 # Hardware requirement
 
 Spresense Main Board : https://www.switch-science.com/catalog/3900/
+
 Spresense Extension Board : https://www.switch-science.com/catalog/3901/
+
 Arduino UNO LCD Connector board : https://www.switch-science.com/catalog/5728/
+
 ILI9341 2.2inch LCD : https://www.switch-science.com/catalog/5902/
+
 Game pad : https://www.amazon.co.jp/snesゲーム対応-ゲームパッド-ゲームハンドル-USB接続-アナログコントローラー-高耐久ボタン-レトロクラシック-ホワイト-２個セット-Iseebiz/dp/B07YWF6RX9/ref=asc_df_B07YWF6RX9
 
 Note: The gamepad can not be used as it is, it is modified inside and connected to Spresense. I think it is good to show other appropriate buttons.
@@ -41,14 +45,14 @@ Spresenseの開発環境の構築をされていることを前提にします�
 以下、ソースコードのcloneからビルドまでです。
 
 
-"""
+```
 git clone --recursive https://github.com/tttk-prj/spresense.git
 cd spresense/sdk
 ./tools/config.py -k release
 make buildkernel
 ./tools/config.py nes
 make
-"""
+```
 
 Note: Cycloa is cloned in this step.
 
@@ -63,10 +67,10 @@ The point is to install not only "nuttx.spk" but also the "renderer" of the work
 ビルド後の実機のボードへの書き込み方法は以下です。
 ポイントはnuttx.spkだけではなく、workerのrendererもインストールするところです。
 
-"""
+```
 ./tools/flash.sh -c <Your devide port name> -w ../examples/nes/video_worker/renderer/renderer
 ./tools/flash.sh -c <Your devide port name> nuttx.spk
-"""
+```
 
 Note: Of course, the Spresense boot loader must be pre-installed on the board. (I am addicted to this.)
 
@@ -100,9 +104,9 @@ SDカードに、game.nesというファイルが存在しないと、NuttShell�
 minicomなどのターミナルソフトから実機に繋ぐと、nsh>というプロンプトが出てくるので、
 "nes"というコマンドと、その引数に実行したいiNESイメージファイル名を入れれば、引数で指定されたイメージをロードして起動します。
 
-"""
+```
 nsh> nes <iNES file name>
-"""
+```
 
 Note: When specifying a file on the SD card, it seems that it is necessary to always specify it with the full path, and it must be "/mnt/sd0/<file name on the SD card>".
 
@@ -123,7 +127,7 @@ Spresenseのピンヘッダに接続して、GPIOのInputとして読み込ん�
 私の場合、Hardware Requirementに記載したゲームパッドを購入して中を改造して利用しました。
 ピンヘッダの位置とボタンの関係は、examples/nes/spresense_gamepad_fairy.hにある、
 
-"""
+```
 # define BUTTON_SELECT PIN_I2S0_BCK
 # define BUTTON_START  PIN_I2S0_LRCK
 # define BUTTON_A      PIN_UART2_RTS
@@ -133,7 +137,7 @@ Spresenseのピンヘッダに接続して、GPIOのInputとして読み込ん�
 # define BUTTON_LEFT   PIN_I2S0_DATA_IN
 # define BUTTON_UP     PIN_I2S0_DATA_OUT
 # define BUTTON_RIGHT  PIN_EMMC_DATA3
-"""
+```
 
 に定義しています。
 環境に合わせて変更してください。
