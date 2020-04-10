@@ -1,4 +1,5 @@
 
+sleep 2
 nes /mnt/sd0/game.nes
 
 

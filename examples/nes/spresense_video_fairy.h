@@ -12,17 +12,6 @@
 
 #include "render_request.h"
 
-#define RGB565(r,g,b) ( (((uint16_t)(r)&(0xF8))<<8) | (((uint16_t)(g)&(0xFC))<<3) | (((uint16_t)(b)&(0xF8))>>3) )
-
-#define RGB565_BLACK  RGB565(0,0,0)
-#define RGB565_RED    RGB565(0xff,0,0)
-#define RGB565_GREEN  RGB565(0,0xff,0)
-#define RGB565_BLUE   RGB565(0,0xff,0)
-
-#ifndef ARGB2RGB565
-#define ARGB2RGB565(x) ( ((x)&(0xF80000)>>8) | ((x)&(0x00FC00)>>5) | ((x)&(0x0000F8)>>3) )
-#endif
-
 class SpresenseVideoFairy;
 
 inline void initialize_render_req(int idx, struct RenderRequestContainer *container)

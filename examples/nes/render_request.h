@@ -1,14 +1,6 @@
 #ifndef __RENDER_REQUEST_H__
 #define __RENDER_REQUEST_H__
 
-#ifndef ARGB2RGB565
-#define ARGB2RGB565(x) ( ((x)&(0xF80000)>>8) | ((x)&(0x00FC00)>>5) | ((x)&(0x0000F8)>>3) )
-#endif
-
-#ifndef RGB565
-#define RGB565(r,g,b) ( (((uint16_t)(r)&(0xF8))<<8) | (((uint16_t)(g)&(0xFC))<<3) | (((uint16_t)(b)&(0xF8))>>3) )
-#endif
-
 struct RenderRequestContainer {
   int lineNo;
   uint8_t *  lineBuf;
