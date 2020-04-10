@@ -53,10 +53,10 @@
 
 #define ASSERT(cond) if (!(cond)) wk_abort()
 
-#define ARGB2RGB565(x) ( \
-    ((uint16_t)((((uint32_t)x)&(0xF80000))>>8)) | \
-    ((uint16_t)((((uint32_t)x)&(0x00FC00))>>5)) | \
-    ((uint16_t)((((uint32_t)x)&(0x0000F8))>>3)) )
+#define ARGB2RGB565(x) (uint16_t)( \
+    ((((uint32_t)x)&(0xF80000))>>8) | \
+    ((((uint32_t)x)&(0x00FC00))>>5) | \
+    ((((uint32_t)x)&(0x0000F8))>>3) )
 
 // #define RGB565(r,g,b) ( (((uint16_t)(r)&(0xF8))<<8) | (((uint16_t)(g)&(0xFC))<<3) | (((uint16_t)(b)&(0xF8))>>3) )
 
