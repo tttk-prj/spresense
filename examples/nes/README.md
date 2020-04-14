@@ -46,12 +46,14 @@ Spresenseの開発環境の構築をされていることを前提にします�
 
 
 ```
-git clone --recursive https://github.com/tttk-prj/spresense.git
-cd spresense/sdk
-./tools/config.py -k release
-make buildkernel
-./tools/config.py nes
-make
+$ git clone --recursive https://github.com/tttk-prj/spresense.git
+$ cd spresense/nuttx
+$ git checkout master
+$ cd ../sdk
+$ ./tools/config.py -k release
+$ make buildkernel
+$ ./tools/config.py nes
+$ make
 ```
 
 Note: Cycloa is cloned in this step.
