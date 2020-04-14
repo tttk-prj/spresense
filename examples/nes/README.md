@@ -35,12 +35,12 @@ Note: The gamepad can not be used as it is, it is modified inside and connected 
 
 # How to build
 
-It is assumed that the development environment of Spresense has been constructed. Refer to [here](https://developer.sony.com/ja/develop/spresense/) for details on environment construction.
+It is assumed that the development environment of Spresense has been constructed. Refer to [here](https://developer.sony.com/develop/spresense/docs/sdk_set_up_en.html) for details on environment construction.
 
 The following is from source code clone to build.
 
 
-Spresenseの開発環境の構築をされていることを前提にします。環境構築について詳しくは[こちら](https://developer.sony.com/ja/develop/spresense/)を参照してください。
+Spresenseの開発環境の構築をされていることを前提にします。環境構築について詳しくは[こちら](https://developer.sony.com/develop/spresense/docs/sdk_set_up_ja.htm)を参照してください。
 
 以下、ソースコードのcloneからビルドまでです。
 
