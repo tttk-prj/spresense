@@ -40,7 +40,7 @@ It is assumed that the development environment of Spresense has been constructed
 The following is from source code clone to build.
 
 
-Spresenseの開発環境の構築をされていることを前提にします。環境構築について詳しくは[こちら](https://developer.sony.com/develop/spresense/docs/sdk_set_up_ja.htm)を参照してください。
+Spresenseの開発環境の構築をされていることを前提にします。環境構築について詳しくは[こちら](https://developer.sony.com/develop/spresense/docs/sdk_set_up_ja.html)を参照してください。
 
 以下、ソースコードのcloneからビルドまでです。
 
